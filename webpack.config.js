@@ -1,12 +1,11 @@
 module.exports = {
-    entry: ['@babel/plyfill', './src/main.js'],
+    entry: ['@babel/polyfill', './src/main.js'],
     output: {
         path: __dirname + '/public',
         filename: 'bundle.js'
     },
     devServer: {
-        contentBase: __dirname + '/public'
-
+        static: __dirname + '/public'
     },
     module: {
         rules: [
