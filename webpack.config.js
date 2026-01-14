@@ -5,7 +5,9 @@ module.exports = {
         filename: 'bundle.js'
     },
     devServer: {
-        static: __dirname + '/public'
+        static: {
+            directory: __dirname + '/public',
+        }
     },
     module: {
         rules: [
