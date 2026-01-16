@@ -1,3 +1,5 @@
+import api from './api.js';
+
 class App{
 
     //Método construtor
@@ -22,18 +24,32 @@ class App{
         
     }
 
-    adicionarRepositorio(evento){
+    async adicionarRepositorio(evento){
         
         //evita que o form recarregue a página
         evento.preventDefault();
 
+        //recuperar o valor do input
+        let input = this.formulario.querySelector('#repositorio').value;
+
+        //se o input estiver vazio, retorna
+        if(input.length === 0){
+            return;
+        }
+
+        let response = await api.get(`/repos/${input}`);
+        //console.log(response);
+
+        let { name, description, html_url, owner: { avatar_url} } = response.data;
+
         //adiciona o repositório na lista
         this.repositorios.push({
-            nome: "Curso JavaScript",
-            descricao: "Descrição do repositório",
-            avatar_url: "https://avatars.githubusercontent.com/u/9919?s=200&v=4",
+            nome: name,
+            descricao: description,
+            avatar_url,
             //link
-
+            link: html_url
+            
         });
 
         //renderiza a tela
