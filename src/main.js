@@ -6,7 +6,7 @@ class App{
     constructor(){
 
         //Lista de repositórios
-        this.repositorios = [];
+        this.repositorios = JSON.parse(localStorage.getItem('repositorios')) || [];
 
         //form
         this.formulario = document.querySelector('#formulario1');
@@ -16,6 +16,9 @@ class App{
 
         //Método para registrar os evento do form
         this.registrarEventos();
+
+        //Renderiza a tela inicial
+        this.renderizarTela();
 
     }
 
@@ -56,8 +59,11 @@ class App{
             
         });
 
+        this.salvarRepStorage();
+
         //renderiza a tela
         this.renderizarTela();
+
         }catch(erro){
             //Limpa buscando
             this.lista.removeChild(document.querySelector('.list-group-item-warning'));
@@ -96,6 +102,8 @@ class App{
             //<li>
             let li = document.createElement('li');
             li.setAttribute('class', 'list-group-item list-group-item-action');
+            //evento de clique no item da lista
+            li.onclick = () => this.deletarRepositorio(rep);
 
             //<img>
             let img = document.createElement('img');
@@ -132,6 +140,16 @@ class App{
             //adiciona o foco no input
             this.formulario.querySelector('#repositorio').focus();
         })
+    }
+    
+    deletarRepositorio(rep){
+        this.repositorios.splice(this.repositorios.indexOf(rep), 1);
+        this.salvarRepStorage();
+        this.renderizarTela();
+    }
+
+    salvarRepStorage(){
+        localStorage.setItem('repositorios', JSON.stringify(this.repositorios));
     }
 
 }
