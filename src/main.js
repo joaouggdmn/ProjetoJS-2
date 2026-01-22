@@ -83,7 +83,6 @@ class App{
     }
 
     apresentarBuscando(){
-    
         let li = document.createElement('li');
             li.setAttribute('class', 'list-group-item list-group-item-warning');
             let txtBusca = document.createTextNode(`Aguardande! Buscando repositório...`);
@@ -108,6 +107,8 @@ class App{
             //<img>
             let img = document.createElement('img');
             img.setAttribute('src', rep.avatar_url);
+            img.setAttribute('alt', 'Avatar do repositório');
+            img.setAttribute('class', 'img-repo');
             //adicionando img como filho de li
             li.appendChild(img);
 
@@ -127,6 +128,7 @@ class App{
             let a = document.createElement('a');
             a.setAttribute('target', '_blank');
             a.setAttribute('href', rep.link);
+            a.setAttribute('class', 'btn btn-outline-primary');
             let txtA = document.createTextNode('Acessar');
             a.appendChild(txtA);
             li.appendChild(a);
