@@ -5,11 +5,6 @@ ul{
     font-family: sans-serif;
 
 }
-li{
-    clear:both;
-    margin-top: 20px;
-
-}
 img{
     float:left;
     width: 100px;
@@ -20,4 +15,31 @@ strong{
 }
 p{
     margin: 5px 0;
+}
+body{
+    background-color: #f8f9fa;
+}
+.card-title{
+    margin-top:50px;
+    margin-left:20px;   
+    font-family:sans-serif;
+}
+.card{
+    margin-top:5px;
+}
+.btn{
+    margin-top:5px;
+    margin-bottom: 10px;
+}
+input{
+    margin-top:2px;
+    margin-bottom:8px;
+}
+.list-group-item{
+    padding: 20px;
+}   
+.img-repo{
+    border-radius: 50%;
+    margin-top: 5px;
+    margin-right: 10px;
 }
